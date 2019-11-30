@@ -46,5 +46,10 @@ fda_approvals <- within(fda_approvals, {
                           approval_year,
                           paste0("20", approval_year)) %>% as.numeric()
 
+  # correct wrongly typed dates
+  approval_year[approval_year == 2104] <- 2014
+  approval_year[approval_year == 2028] <- 2018
+
+
   number <- gsub("\\.", "", number) %>% as.numeric()
 })
